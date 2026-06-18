@@ -5,7 +5,8 @@ export const apiHost = codespaceName
   : 'http://localhost:8000'
 
 export function apiEndpoint(path: string) {
-  return `${apiHost}/api/${path}`
+  const clean = String(path).replace(/^\/+|\/+$/g, '')
+  return `${apiHost}/api/${clean}/`
 }
 
 export function normalizeArrayResponse<T>(payload: unknown): T[] {
